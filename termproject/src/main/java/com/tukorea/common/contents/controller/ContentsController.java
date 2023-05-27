@@ -42,7 +42,10 @@ private final ContentsService service;
 		
 		return "common/contents/ContentsPage";
 	}
-	
+	@GetMapping("/contents/detail")
+	public String getContentsDetail() {
+		return "common/contents/ContentsDetail";
+	}
 
 	
 	
