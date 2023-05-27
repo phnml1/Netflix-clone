@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.tukorea.common.contents.dao.ContentsMapper">
+<select id = "selectContentsListTotalCount" parameterType = "java.util.HashMap" resultType = "Integer">
+	SELECT
+		COUNT(*) AS TOTAL_CNT
+	FROM
+		CONTENTS
+</select>
+<select id = "selectContentsList" parameterType="java.util.HashMap" resultType = "com.tukorea.common.contents.domain.Contents">
+	SELECT
+		CONTENTS_ID,
+		TITLE,
+		GENRE,
+		YEAR,
+		DIRECTOR,
+		RUNNING,
+		SUMMARY,
+		HITS,
+		POSTER,
+		KIND
+	FROM
+		CONTENTS
+	ORDER BY
+		CONTENTS_ID DESC
+	LIMIT ${startNum}, ${listNum}
+</select>
+
+
+</mapper>
