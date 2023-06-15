@@ -12,7 +12,7 @@
 <title>Netflix</title>
 </head>
 <body>
-	<div id = "mainwrap">
+	<div id = "maindetailwrap">
 	<div id="headerwrap" class = "headernotscroll">
 		<div class='menu-nav'>
   			<a href = "/"><div class="icon" ></a>
@@ -24,19 +24,20 @@
   <div id = "detailwrap">
   	<div class = "detailinfowrap">
   	<div class = "detailinfocon">
-  		<div class = "detailinfotitle">콘텐츠 제목</div>
-  		<div class = "detailinfogenre">장르</div>
+  		<div class = "detailinfotitle">${content.title }</div>
+  		<div class = "detailinfogenre">${content.genre }</div>
   	</div>
   	<div class="detailinfocon">
-  		<div class = "detailinfoyear">연도</div>
-  		<div class = "detailinforun">러닝타임</div>
+  		<div class = "detailinfoyear">${content.year }</div>
+  		<div class = "detailinforun">${content.running }분</div>
   	</div>
-  	<div class = "detailinfodirec">감독</div>
-  		<div class = "detailinfosum">줄거리</div>
-  		<div class = "detailinfohits">조회수</div>
+  	<div class = "detailinfodirec">감독: ${content.director }</div>
+  		<div class = "detailinfosum">${content.summary }</div>
+  		<div class = "detailinfohits">조회수: ${content.hits }</div>
   	</div>
   	
   	<div class = "detailposterwrap">
+  	<img width = "100%" src="${content.poster_img_save_path }">
   	</div>
   	</div>
 </body>

@@ -9,13 +9,29 @@ public class Contents {
 	int running;
 	String summary;
 	int hits;
-	String poster;
 	String kind;
+	String poster_img_name;
+	String poster_img_save_path;
 	public int getContents_id() {
 		return contents_id;
 	}
 	public void setContents_id(int contents_id) {
 		this.contents_id = contents_id;
+	}
+	public Contents(int contents_id, String title, String genre, int year, String director, int running, String summary,
+			int hits, String kind, String poster_img_name, String poster_img_save_path) {
+		super();
+		this.contents_id = contents_id;
+		this.title = title;
+		this.genre = genre;
+		this.year = year;
+		this.director = director;
+		this.running = running;
+		this.summary = summary;
+		this.hits = hits;
+		this.kind = kind;
+		this.poster_img_name = poster_img_name;
+		this.poster_img_save_path = poster_img_save_path;
 	}
 	public String getTitle() {
 		return title;
@@ -59,11 +75,17 @@ public class Contents {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	public String getPoster() {
-		return poster;
+	public String getPoster_img_name() {
+		return poster_img_name;
 	}
-	public void setPoster(String poster) {
-		this.poster = poster;
+	public void setPoster_img_name(String poster_img_name) {
+		this.poster_img_name = poster_img_name;
+	}
+	public String getPoster_img_save_path() {
+		return poster_img_save_path;
+	}
+	public void setPoster_img_save_path(String poster_img_save_path) {
+		this.poster_img_save_path = poster_img_save_path;
 	}
 	public String getKind() {
 		return kind;
@@ -71,6 +93,7 @@ public class Contents {
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
+	
 	
 	
 }

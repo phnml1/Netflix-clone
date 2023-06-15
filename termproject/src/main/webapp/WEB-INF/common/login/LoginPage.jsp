@@ -30,9 +30,11 @@
     	 <div class = "login-box">
     		<div class = "login-contents-box">
     			<h2 class = "login-contents-name">로그인</h2>
-    			<form class = "login-form">
-    				<input type = "text" placeholder="이메일 주소" class = "logininput"/>
-    				<input type = "text" placeholder="비밀 번호" class = "logininput"/>
+    			<form id = "login-form">
+    				<input type = "text" placeholder="아이디" name = "id" class = "logininput"/>
+    				<div class="alarm">아이디를 입력해주세요.</div>
+    				<input type = "text" placeholder="비밀 번호" name="password" class = "logininput"/>
+    				<div class="alarm">비밀번호를 입력해주세요.</div>
     				<button class = "loginbutton">로그인</button>
     				<div class = "login-joincon">
     				<span>Netlix 회원이 아니신가요?</span><a href = "/join"><span>지금 가입하세요</span></a>
@@ -43,5 +45,59 @@
     </div>
    
 	</div>
+	<script>
+	<%-- 엔터키 - 로그인 버튼 클릭 처리 --%>
+	$('#login-form input').on('keyup',function(e){
+		if(e.keyCode == 13){
+			e.preventDefault();
+			
+			if($(this).attr('id')=='pwd_input'){
+				$('#btn_login').click();
+			}
+		}
+	});
+	$('.loginbutton').on('click', function() { 
+		<%-- form validation --%>
+		<%-- form validation --%>
+		var validTF = true;
+		$('#login-form .required').each(function() {
+		if ($.trim($(this).val()) == '') {
+			alert($(this).attr('title') + ' 항목은 필수값입니다.');
+			$(this).siblings('div.alarm').show();
+			validTF = false;
+			return false;
+		} else {
+			$(this).siblings('div.alarm').hide();
+		}
+		});
+		if (!validTF) {
+			return false;
+		}
+		<%-- ajax 호출 --%>
+
+
+			//ajax호출
+			$.ajax({
+				url:'/login',
+				type:'POST',
+				data: $('#login-form').serialize(),
+				success: function (data) {
+					var result_cd = data.result_cd;
+					if(result_cd == '00'){
+						location.href = "/";
+					}else{
+						var result_msg = data.result_msg;
+						alert(result_msg);
+					}
+					
+				},
+				error: function(error){
+					console.log(error);
+				}		
+				});
+		});
+		});
+
+	</script>
 </body>
 </html>

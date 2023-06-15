@@ -7,7 +7,7 @@
 	FROM
 		CONTENTS
 </select>
-<select id = "selectContentsList" parameterType="java.util.HashMap" resultType = "com.tukorea.common.contents.domain.Contents">
+<select id = "selectContentsList" resultType = "com.tukorea.common.contents.domain.Contents">
 	SELECT
 		CONTENTS_ID,
 		TITLE,
@@ -17,14 +17,71 @@
 		RUNNING,
 		SUMMARY,
 		HITS,
-		POSTER,
-		KIND
+		KIND,
+		POSTER_IMG_NAME,
+		POSTER_IMG_SAVE_PATH
 	FROM
 		CONTENTS
+	WHERE
+		KIND='MOVIE'
 	ORDER BY
 		CONTENTS_ID DESC
-	LIMIT ${startNum}, ${listNum}
 </select>
-
+<!-- 게시판 상세 조회 -->
+	<select id="selectContentsInfo" parameterType="Integer" resultType="com.tukorea.common.contents.domain.Contents">
+		SELECT
+			CONTENTS_ID,
+			TITLE,
+			GENRE,
+			YEAR,
+			DIRECTOR,
+			RUNNING,
+			SUMMARY,
+			HITS,
+			KIND,
+			DATE_FORMAT(REG_DT, '%Y-%m-%d %H:%i') AS REG_DT,
+			POSTER_IMG_SAVE_PATH
+		FROM
+			CONTENTS
+		WHERE
+			CONTENTS_ID = #{contents_id}
+	</select>
+	<update id="updateContentsHits" parameterType="Integer">
+		UPDATE CONTENTS
+		SET
+			HITS = HITS + 1
+		WHERE
+			CONTENTS_ID = #{contents_id}
+	</update>
+	<insert id="insertContents" parameterType="java.util.HashMap">
+		INSERT INTO CONTENTS (
+			TITLE,
+			GENRE,
+			YEAR,
+			DIRECTOR,
+			RUNNING,
+			SUMMARY,
+			HITS,
+			KIND,
+			POSTER_IMG_NAME,
+			POSTER_IMG_SAVE_PATH,
+			REG_DT
+		) VALUES (
+			#{title},
+			#{genre},
+			#{year},
+			#{director},
+			#{running},
+			#{summary},
+			#{hits},
+			#{kind},
+			#{imageName},
+			#{savePath},
+			NOW()
+		)
+		<selectKey keyProperty="contents_id" resultType="Integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
 
 </mapper>

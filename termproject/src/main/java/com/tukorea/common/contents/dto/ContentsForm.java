@@ -1,8 +1,7 @@
 package com.tukorea.common.contents.dto;
 
-public class ContentsList {
+public class ContentsForm {
 
-	private int contents_id; // 게시판 시퀀스
 	private String title;
 	private String genre;
 	private int year;
@@ -11,16 +10,8 @@ public class ContentsList {
 	private String summary;
 	private int hits;
 	private String poster_img_name;
-	private String poster_img_save_path;
+	private String poster_img_poster;
 	private String kind;
-	private String regDt;
-	
-	public int getContents_id() {
-		return contents_id;
-	}
-	public void setContents_id(int contents_id) {
-		this.contents_id = contents_id;
-	}
 	public String getTitle() {
 		return title;
 	}
@@ -69,12 +60,11 @@ public class ContentsList {
 	public void setPoster_img_name(String poster_img_name) {
 		this.poster_img_name = poster_img_name;
 	}
-	
-	public String getPoster_img_save_path() {
-		return poster_img_save_path;
+	public String getPoster_img_poster() {
+		return poster_img_poster;
 	}
-	public void setPoster_img_save_path(String poster_img_save_path) {
-		this.poster_img_save_path = poster_img_save_path;
+	public void setPoster_img_poster(String poster_img_poster) {
+		this.poster_img_poster = poster_img_poster;
 	}
 	public String getKind() {
 		return kind;
@@ -82,13 +72,10 @@ public class ContentsList {
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
-	public String getRegDt() {
-		return regDt;
-	}
-	public void setRegDt(String regDt) {
-		this.regDt = regDt;
-	}
+	
+	
 	
 
 	
+
 }
