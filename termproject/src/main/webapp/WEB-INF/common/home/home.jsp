@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link type="text/css" rel="stylesheet" href="/web/css/home.css" />
   <link type = "text/css" rel = "stylesheet" href = "/web/css/Common.css"/>
-  <script src="index.js"></script>
+  <script src="/web/js/index.js"></script>
   <title>Netflix</title>
 </head>
 <body>
@@ -37,11 +37,24 @@
                 </select>
               </div>
               <div id="logincon">
+              <%
+              String id=(String)session.getAttribute("id");
+              String type = (String)session.getAttribute("type");
+              if (id==null) {
+            	    
+              %>
               <a href = "/login">
                 <div class='button loginbutton'>
                   로그인
                 </div>
                 </a>
+                <%} else { %>
+                 <a href = "/logout">
+                <div class='button loginbutton'>
+                  로그아웃
+                </div>
+                </a>
+                <%} %>
               </div>
             </div>
           </div>
@@ -55,6 +68,10 @@
           <div class="beginword1">
             <h1>
               영화와 시리즈를 무제한으로.
+              <%
+                 String address = (String)session.getAttribute("address");
+                  %>
+                  <%= type %>
             </h1>
           </div>
           <div class="beginword2">

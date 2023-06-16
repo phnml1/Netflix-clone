@@ -1,11 +1,14 @@
 package com.tukorea.common.login.service;
 
+
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.tukorea.common.login.dao.LoginDao;
+import com.tukorea.common.login.domain.Login;
 import com.tukorea.common.login.dto.LoginForm;
 @Service
 public class LoginService {
@@ -29,7 +32,7 @@ public class LoginService {
 			}
 			resultMap.put("member", memberMap); 
 			// 회원 최근 로그인 일시 정보 수정 
-			dao.updateMemberRecentLoginDatetime(paramMap); 
+		
 		} catch (Exception ex) { 
 			result_cd = "99"; 
 			result_msg = ex.getMessage(); 
@@ -39,5 +42,42 @@ public class LoginService {
 			resultMap.put("result_msg", result_msg); 
 			}
 		return resultMap;
+	}
+	
+	public void addBoard(LoginForm loginForm) {
+		// 전역변수
+		
+		try {
+			// 파라미터 검증
+			if (!StringUtils.hasText(loginForm.getId())) {
+				throw new Exception("제목 입력값이 없습니다.");
+			}
+			
+			if (!StringUtils.hasText(loginForm.getPassword())) {
+				throw new Exception("비밀번호 입력값이 없습니다.");
+			}
+			
+			if (!StringUtils.hasText(loginForm.getAddress())) {
+				throw new Exception("주소 입력값이 없습니다.");
+			}
+			
+			
+			
+			// 등록용 파라미터 정제(DTO -> Domain)
+			Login login = new Login();
+			login.setId(loginForm.getId());
+			login.setPassword(loginForm.getPassword());
+			login.setAddress(loginForm.getAddress());
+			login.setAge(loginForm.getAge());
+			login.setName(loginForm.getName());
+			login.setType(loginForm.getType());
+			// 게시판 등록
+			dao.insertMember(login);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// return;
 	}
 }

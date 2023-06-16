@@ -1,6 +1,6 @@
-package com.tukorea.common.login.dto;
+package com.tukorea.common.login.domain;
 
-public class LoginForm {
+public class Login {
 	private int num;
 	private String id;
 	private String password;

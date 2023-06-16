@@ -29,11 +29,13 @@
     	 <div class = "login-box">
     		<div class = "login-contents-box">
     			<h2 class = "login-contents-name">회원가입</h2>
-    			<form class = "login-form">
-    				<input type = "text" placeholder="이메일 주소" class = "logininput"/>
-    				<input type = "text" placeholder="비밀 번호" class = "logininput"/>
-    				<input type = "text" placeholder="주소" class = "logininput"/>
-    				<input type = "text" placeholder="나이" class = "logininput"/>
+    			<form class = "login-form" action="/join/new" method="post">
+    				<input type = "text" placeholder="이메일 주소" name = "id" class = "logininput"/>
+    				<input type = "password" placeholder="비밀 번호" name = "password" class = "logininput"/>
+    				<input type = "text" placeholder="주소" name = "address" class = "logininput"/>
+    				<input type = "number" placeholder="나이" name = "age" class = "logininput"/>
+    				<input type = "text" placeholder="이름" name = "name" class = "logininput"/>
+    				<input type = "hidden" name="type" value = "admin"/>
     				<button class = "loginbutton">회원가입</button>
     				
     			</form>

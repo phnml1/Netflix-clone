@@ -76,8 +76,19 @@ div.button-area button:hover, div.button-area a.button:hover {
 
 </head>
 <body>
+<%
+
+String type = (String)session.getAttribute("type");
+
+	if(!(type.equals("admin"))){
+	    out.println("<script>alert('관리자만 접근가능합니다.'); history.go(-1);</script>");
+	    out.flush();
+	    response.flushBuffer();
+	    out.close();
+	}
+%>
 	<div class="container">
-		<p class="title">Spring boot로 만들어보는 게시판</p>
+		<p class="title">Spring boot로 만들어보는 게시판<%=type %></p>
 		<form id="add_form" action="/contents/new" method="post" enctype="multipart/form-data">
 			<table class="form-table">
 				<tr>

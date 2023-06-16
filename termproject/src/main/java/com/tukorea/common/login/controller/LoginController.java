@@ -2,6 +2,7 @@ package com.tukorea.common.login.controller;
 
 
 
+
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.tukorea.common.login.dto.LoginForm;
 import com.tukorea.common.login.service.LoginService;
 
@@ -50,6 +50,18 @@ public class LoginController {
 	}
 	return resultMap; 
 	}
+	@GetMapping("/classify")
+	public String classify(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		 String type = (String)session.getAttribute("type");
+		 if(type.equals("admin")) {
+			 return "redirect:/contents/form";
+			  
+		 }else {
+			 return "redirect:/";
+		 }
+		
+	}
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) { 
 	HttpSession session = request.getSession(false);
@@ -57,6 +69,13 @@ public class LoginController {
 	session.invalidate();
 	}
 	return "redirect:/"; 
+	}
+	@PostMapping("/join/new")
+	public String addBoard(LoginForm loginForm) {
+		// 게시판 등록 메서드 호출
+		service.addBoard(loginForm);
+		
+		return "redirect:/";
 	}
 	@GetMapping("/join")
 	public String join() {

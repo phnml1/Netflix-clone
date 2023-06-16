@@ -26,6 +26,18 @@
   <title>Netflix</title>
 </head>
 <body>
+<%
+
+String id = (String)session.getAttribute("id");
+
+	if(id==null){
+	    out.println("<script>alert('로그인을 하세요.');location.href='/login' </script> ");
+	    out.flush();
+	    response.flushBuffer();
+	    out.close();
+	    response.sendRedirect("www.naver.com");
+	}
+%>
 <div id = "mainwrap">
 	<div id="headerwrap" class = "headernotscroll">
 <div class='menu-nav'>

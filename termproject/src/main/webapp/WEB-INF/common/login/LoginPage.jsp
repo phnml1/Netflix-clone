@@ -33,7 +33,7 @@
     			<form id = "login-form">
     				<input type = "text" placeholder="아이디" name = "id" class = "logininput"/>
     				<div class="alarm">아이디를 입력해주세요.</div>
-    				<input type = "text" placeholder="비밀 번호" name="password" class = "logininput"/>
+    				<input type = "password" placeholder="비밀 번호" name="password" class = "logininput"/>
     				<div class="alarm">비밀번호를 입력해주세요.</div>
     				<button class = "loginbutton">로그인</button>
     				<div class = "login-joincon">
@@ -45,7 +45,9 @@
     </div>
    
 	</div>
-	<script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script type="text/javascript">
+$(document).ready(function() {
 	<%-- 엔터키 - 로그인 버튼 클릭 처리 --%>
 	$('#login-form input').on('keyup',function(e){
 		if(e.keyCode == 13){
@@ -84,8 +86,9 @@
 				success: function (data) {
 					var result_cd = data.result_cd;
 					if(result_cd == '00'){
-						location.href = "/";
-					}else{
+						location.href = "/classify";
+					}
+					else{
 						var result_msg = data.result_msg;
 						alert(result_msg);
 					}
