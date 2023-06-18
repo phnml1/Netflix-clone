@@ -15,4 +15,6 @@ public interface LoginDao {
 	
 	// 게시판 글 등록
 	public int insertMember(Login login);
+	
+
 }

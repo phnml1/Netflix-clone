@@ -83,5 +83,20 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	<delete id="deleteBoard" parameterType="Integer">
+		DELETE FROM CONTENTS
+		WHERE
+			CONTENTS_ID = #{contents_id}
+	</delete>
+	<!-- 게시물 글 소유자 확인 -->
+	<select id="selectContentsPasswordForCheck" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*) AS TOTAL_CNT
+		FROM
+			CUSTOMER
+		WHERE
+			TYPE = 'ADMIN'
+			AND PASSWORD = SHA2(#{password}, 256)
+	</select>
 
 </mapper>

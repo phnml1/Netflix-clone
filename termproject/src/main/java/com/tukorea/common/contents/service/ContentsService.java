@@ -1,5 +1,6 @@
 package com.tukorea.common.contents.service;
 
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.tukorea.common.contents.dao.ContentsMapper;
 import com.tukorea.common.contents.domain.Contents;
 import com.tukorea.common.contents.dto.ContentsList;
+import com.tukorea.common.login.dao.LoginDao;
 
 
 
@@ -30,7 +32,7 @@ public class ContentsService {
 
 
 	@Autowired
-	public  ContentsService(ContentsMapper mapper) {
+	public ContentsService(ContentsMapper mapper) {
 		this.mapper = mapper;
 	}
 	
@@ -163,6 +165,39 @@ public class ContentsService {
 		
 		return content;
 	}
-	
+	public void deleteBoard(int contentsId) {
+		try {
+			// 게시물 삭제
+			mapper.deleteBoard(contentsId);
+			
+			System.out.println("게시물 삭제 완료");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public boolean checkBoardOwner(int boardSeq, String password) {
+		boolean result = false;
+		
+		try {
+			// 게시물 패스워드 일치 여부 확인
+			HashMap<String, Object> paramMap = new HashMap<String,Object>();
+
+			paramMap.put("password", password);
+			
+			// 일치하는 게시물 있는지 확인
+			int totalCount = mapper.selectContentsPasswordForCheck(paramMap);
+			System.out.println("게시물 총 건수 조회 완료(" + totalCount + "건)");
+			
+			if (totalCount > 0) {
+				result = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 }

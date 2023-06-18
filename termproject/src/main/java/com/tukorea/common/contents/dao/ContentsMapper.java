@@ -25,4 +25,9 @@ public interface ContentsMapper {
 		
 		// 게시물 조회수 증가
 		public int updateContentsHits(int ContentsSeq);
+		// 게시물 글 삭제
+		public int deleteBoard(int boardSeq);
+		
+		public int selectContentsPasswordForCheck(HashMap<String,Object> paramMap);
+
 }
