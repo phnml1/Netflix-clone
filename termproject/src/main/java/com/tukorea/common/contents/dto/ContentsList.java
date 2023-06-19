@@ -2,7 +2,7 @@ package com.tukorea.common.contents.dto;
 
 public class ContentsList {
 
-	private int contents_id; // 게시판 시퀀스
+	private int contentsid; // 게시판 시퀀스
 	private String title;
 	private String genre;
 	private int year;
@@ -10,17 +10,11 @@ public class ContentsList {
 	private int running;
 	private String summary;
 	private int hits;
-	private String poster_img_name;
-	private String poster_img_save_path;
+	private String posterimgname;
+	private String posterimgsavepath;
 	private String kind;
-	private String regDt;
 	
-	public int getContents_id() {
-		return contents_id;
-	}
-	public void setContents_id(int contents_id) {
-		this.contents_id = contents_id;
-	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -63,18 +57,24 @@ public class ContentsList {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	public String getPoster_img_name() {
-		return poster_img_name;
-	}
-	public void setPoster_img_name(String poster_img_name) {
-		this.poster_img_name = poster_img_name;
-	}
 	
-	public String getPoster_img_save_path() {
-		return poster_img_save_path;
+	public int getContentsid() {
+		return contentsid;
 	}
-	public void setPoster_img_save_path(String poster_img_save_path) {
-		this.poster_img_save_path = poster_img_save_path;
+	public void setContentsid(int contentsid) {
+		this.contentsid = contentsid;
+	}
+	public String getPosterimgname() {
+		return posterimgname;
+	}
+	public void setPosterimgname(String posterimgname) {
+		this.posterimgname = posterimgname;
+	}
+	public String getPosterimgsavepath() {
+		return posterimgsavepath;
+	}
+	public void setPosterimgsavepath(String posterimgsavepath) {
+		this.posterimgsavepath = posterimgsavepath;
 	}
 	public String getKind() {
 		return kind;
@@ -82,12 +82,7 @@ public class ContentsList {
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
-	public String getRegDt() {
-		return regDt;
-	}
-	public void setRegDt(String regDt) {
-		this.regDt = regDt;
-	}
+	
 	
 
 	

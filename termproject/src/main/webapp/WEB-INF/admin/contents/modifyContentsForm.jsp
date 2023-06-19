@@ -88,22 +88,23 @@ String type = (String)session.getAttribute("type");
 	}
 %>
 	<div class="container">
-		<p class="title">Spring boot로 만들어보는 게시판<%=type %></p>
-		<form id="add_form" action="/contents/new" method="post" enctype="multipart/form-data">
+		<p class="title">Spring boot로 만들어보는 게시판</p>
+		<form id="add_form" action="/contents/modify" method="post" enctype="multipart/form-data">
 			<table class="form-table">
 				<tr>
-					<th>제목<em class="red">*</em></th>
+				<input type = "hidden" name  = "contentsid" value = "${contents.contentsid }"/>
+					<th>제목<em class="red" >*</em></th>
 					<td colspan="3">
-						<input type="text" class="input-normal" name="title" maxlength="100" placeholder="제목을 입력해주세요.">
+						<input type="text" class="input-normal" name="title" maxlength="100" placeholder="제목을 입력해주세요." value = "${contents.title }">
 					</td>
 					<th>감독<em class="red">*</em></th>
 					<td>
-						<input type="text" class="input-normal" name="director" maxlength="50" placeholder="감독을 입력해주세요.">					
+						<input type="text" class="input-normal" name="director" maxlength="50" placeholder="감독을 입력해주세요." value = "${contents.director }">					
 					</td>
 					
 			<th>연도<em class="red">*</em></th>
 					<td>
-						<input type="number" class="input-normal" name="year" maxlength="50" placeholder="연도를 입력해주세요.">					
+						<input type="number" class="input-normal" name="year" maxlength="50" placeholder="연도를 입력해주세요." value = "${contents.year }">					
 					</td>
 				</tr>
 				<tr>
@@ -132,9 +133,9 @@ String type = (String)session.getAttribute("type");
   </select>
 			</td>
 				
-					<th>러닝타임(시리즈는 0으로)<em class="red" value = "0">*</em></th>
+					<th>러닝타임(시리즈는 0으로)<em class="red" >*</em></th>
 					<td>
-						<input value = "0" type="number" class="input-normal" name="running" maxlength="50" placeholder="러닝타임을 입력해주세요.">					
+						<input type="number" value = "${contents.running }" class="input-normal" name="running" maxlength="50" placeholder="러닝타임을 입력해주세요."/>					
 					</td>
 					<th>포스터</th>
 					<td>
@@ -145,14 +146,14 @@ String type = (String)session.getAttribute("type");
 				<tr>
 						<th>줄거리<em class="red">*</em></th>
 					<td colspan = "8" rowspan = "5">
-						<textarea cols = "80" rows = "5" class="input-normal" name="summary" maxlength="50" placeholder="줄거리를 입력해주세요." ></textarea>									</td>
+						<textarea cols = "80" rows = "5" class="input-normal" name="summary" maxlength="200" placeholder="줄거리를 입력해주세요.">${contents.summary }</textarea>									</td>
 				</tr>
 				
 				
 			</table>
 			<div class="button-area">
 				<button type="submit"  id="btn_regist">게시물 등록</button>
-				<a class="button" href="/contents">게시판 목록</a>
+				<a class="button" href="/${contents.kind }">게시판 목록</a>
 			</div>
 			
 		</form>
@@ -169,7 +170,7 @@ String type = (String)session.getAttribute("type");
 				$.ajax({
 					type:"post",
 					enctype:'multipart/form-data',
-				    url:'/contents/new',
+				    url:'/contents/modify',
 				    data:formData,
 				    dataType:'json',
 				    processData : false,

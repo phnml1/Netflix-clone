@@ -26,18 +26,6 @@
   <title>Netflix</title>
 </head>
 <body>
-<%
-
-String id = (String)session.getAttribute("id");
-
-	if(id==null){
-	    out.println("<script>alert('로그인을 하세요.');location.href='/login' </script> ");
-	    out.flush();
-	    response.flushBuffer();
-	    out.close();
-	    response.sendRedirect("www.naver.com");
-	}
-%>
 <div id = "mainwrap">
 	<div id="headerwrap" class = "headernotscroll">
 <div class='menu-nav'>
@@ -103,17 +91,28 @@ String id = (String)session.getAttribute("id");
    </div>
    <div class = "movie-row">
    <div class = "movie-row__title">
-   로맨스
+   영화들1
    </div>
    <div class = "movie-row__carousel">
    <div class="swiper swiper1">
   <div class="swiper-wrapper">
   <c:forEach var="content" items="${ContentsList}">
-    	<c:if test="${content.genre eq 'romance' }">
-    	<div class="swiper-slide"><a style ="width:100%; height:100%"href="/contents/detail?contents_id=${content.contents_id}">${content.title}<img class = "swiperimg" src="${content.poster_img_save_path}" ></a></div>
-		</c:if>
+    	<div class="swiper-slide">${content.title}<img src="${content.poster }"></div>
 	</c:forEach>
-		
+		<div class="swiper-slide">slide2<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABY6Du6Vqyv826_MZsnUUJhxLNKCymwXdGijfPfnkv_HklGqF7WKTW0DLEM09PqnHYEpgpN22tCVuLP7_TrWVlFAGinz3Pl13Etw.webp?r=9cf"></div>
+		<div class="swiper-slide">slide3<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABY6Du6Vqyv826_MZsnUUJhxLNKCymwXdGijfPfnkv_HklGqF7WKTW0DLEM09PqnHYEpgpN22tCVuLP7_TrWVlFAGinz3Pl13Etw.webp?r=9cf"></div>
+		<div class="swiper-slide">slide4<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABSIbApUlzOF-MKyNe__euO1fx5fEJ0ZH5zPXarD-CzGVetWP4svEkvQApQZjVj14WJXeeNuLfcL_35fg6pIc6qjPrCR8HOw8GbY.webp?r=708"></div>
+		<div class="swiper-slide">slide5<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABVQNRJujXD_Z1uo2gLpopvWltYVj1p7lxeB7yjvqT5bcvFwxJVXvolNaYx2ZCfODZetOKtJv2HdDF-Q3Km5kqEnQM37iXRjD8umymfVZre9zS1t8gRtrF0E53J72svBI2q8E.jpg?r=95f"></div>
+		<div class="swiper-slide">slide6<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABSWDG8CUCZGszS34PpwYPUvGWx9MIGA9ASFZi2QAZOF48WKr_XGJxr3B99PRzAGBgTzhbBc3iDYXcVThk-09ZHXxeq-M0KJOPzX8rnipxlIpcvgoJJuMnJslYyYikZbvzRli.jpg?r=b45"></div>
+		<div class="swiper-slide">slide7<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABSIbApUlzOF-MKyNe__euO1fx5fEJ0ZH5zPXarD-CzGVetWP4svEkvQApQZjVj14WJXeeNuLfcL_35fg6pIc6qjPrCR8HOw8GbY.webp?r=708"></div>
+		<div class="swiper-slide">slide8<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABVQNRJujXD_Z1uo2gLpopvWltYVj1p7lxeB7yjvqT5bcvFwxJVXvolNaYx2ZCfODZetOKtJv2HdDF-Q3Km5kqEnQM37iXRjD8umymfVZre9zS1t8gRtrF0E53J72svBI2q8E.jpg?r=95f"></div>
+		<div class="swiper-slide">slide3<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABY6Du6Vqyv826_MZsnUUJhxLNKCymwXdGijfPfnkv_HklGqF7WKTW0DLEM09PqnHYEpgpN22tCVuLP7_TrWVlFAGinz3Pl13Etw.webp?r=9cf"></div>
+		<div class="swiper-slide">slide5<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABVQNRJujXD_Z1uo2gLpopvWltYVj1p7lxeB7yjvqT5bcvFwxJVXvolNaYx2ZCfODZetOKtJv2HdDF-Q3Km5kqEnQM37iXRjD8umymfVZre9zS1t8gRtrF0E53J72svBI2q8E.jpg?r=95f"></div>
+		<div class="swiper-slide">slide6<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABSIbApUlzOF-MKyNe__euO1fx5fEJ0ZH5zPXarD-CzGVetWP4svEkvQApQZjVj14WJXeeNuLfcL_35fg6pIc6qjPrCR8HOw8GbY.webp?r=708"></div>
+		<div class="swiper-slide">slide7<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABSWDG8CUCZGszS34PpwYPUvGWx9MIGA9ASFZi2QAZOF48WKr_XGJxr3B99PRzAGBgTzhbBc3iDYXcVThk-09ZHXxeq-M0KJOPzX8rnipxlIpcvgoJJuMnJslYyYikZbvzRli.jpg?r=b45"></div>
+		<div class="swiper-slide">slide8<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABY6Du6Vqyv826_MZsnUUJhxLNKCymwXdGijfPfnkv_HklGqF7WKTW0DLEM09PqnHYEpgpN22tCVuLP7_TrWVlFAGinz3Pl13Etw.webp?r=9cf"></div>
+		<div class="swiper-slide">slide9<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABSIbApUlzOF-MKyNe__euO1fx5fEJ0ZH5zPXarD-CzGVetWP4svEkvQApQZjVj14WJXeeNuLfcL_35fg6pIc6qjPrCR8HOw8GbY.webp?r=708"></div>
+		<div class="swiper-slide">slide10<img src="https://occ-0-325-988.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABSWDG8CUCZGszS34PpwYPUvGWx9MIGA9ASFZi2QAZOF48WKr_XGJxr3B99PRzAGBgTzhbBc3iDYXcVThk-09ZHXxeq-M0KJOPzX8rnipxlIpcvgoJJuMnJslYyYikZbvzRli.jpg?r=b45"></div>
   
   </div>
   <div class="swiper-pagination"></div>

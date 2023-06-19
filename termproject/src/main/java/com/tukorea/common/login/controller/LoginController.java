@@ -50,16 +50,9 @@ public class LoginController {
 	}
 	return resultMap; 
 	}
-	@GetMapping("/classify")
+	@GetMapping("/classify") 
 	public String classify(HttpServletRequest request){
-		HttpSession session = request.getSession();
-		 String type = (String)session.getAttribute("type");
-		 if(type.equals("admin")) {
-			 return "redirect:/contents/form";
-			  
-		 }else {
-			 return "redirect:/";
-		 }
+		return "redirect:/";
 		
 	}
 	@GetMapping("/logout")

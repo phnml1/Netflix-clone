@@ -1,37 +1,23 @@
 package com.tukorea.common.contents.domain;
 
 public class Contents {
-	int contents_id;
-	String title;
-	String genre;
-	int year;
-	String director;
-	int running;
-	String summary;
-	int hits;
-	String kind;
-	String poster_img_name;
-	String poster_img_save_path;
-	public int getContents_id() {
-		return contents_id;
+	private int contentsid; // 게시판 시퀀스
+	private String title;
+	private String genre;
+	private int year;
+	private String director;
+	private int running;
+	private String summary;
+	private int hits;
+	private String posterimgname;
+	private String posterimgsavepath;
+	private String kind;
+
+	public int getContentsid() {
+		return contentsid;
 	}
-	public void setContents_id(int contents_id) {
-		this.contents_id = contents_id;
-	}
-	public Contents(int contents_id, String title, String genre, int year, String director, int running, String summary,
-			int hits, String kind, String poster_img_name, String poster_img_save_path) {
-		super();
-		this.contents_id = contents_id;
-		this.title = title;
-		this.genre = genre;
-		this.year = year;
-		this.director = director;
-		this.running = running;
-		this.summary = summary;
-		this.hits = hits;
-		this.kind = kind;
-		this.poster_img_name = poster_img_name;
-		this.poster_img_save_path = poster_img_save_path;
+	public void setContentsid(int contentsid) {
+		this.contentsid = contentsid;
 	}
 	public String getTitle() {
 		return title;
@@ -75,17 +61,18 @@ public class Contents {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	public String getPoster_img_name() {
-		return poster_img_name;
+	
+	public String getPosterimgname() {
+		return posterimgname;
 	}
-	public void setPoster_img_name(String poster_img_name) {
-		this.poster_img_name = poster_img_name;
+	public void setPosterimgname(String posterimgname) {
+		this.posterimgname = posterimgname;
 	}
-	public String getPoster_img_save_path() {
-		return poster_img_save_path;
+	public String getPosterimgsavepath() {
+		return posterimgsavepath;
 	}
-	public void setPoster_img_save_path(String poster_img_save_path) {
-		this.poster_img_save_path = poster_img_save_path;
+	public void setPosterimgsavepath(String posterimgsavepath) {
+		this.posterimgsavepath = posterimgsavepath;
 	}
 	public String getKind() {
 		return kind;
@@ -93,7 +80,6 @@ public class Contents {
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
-	
 	
 	
 }

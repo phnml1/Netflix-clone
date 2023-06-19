@@ -1,7 +1,8 @@
 package com.tukorea.common.contents.dto;
 
-public class ContentsForm {
-
+public class ContentsModifyForm {
+	private int contentsid; // 게시물 시퀀스
+	
 	private String title;
 	private String genre;
 	private int year;
@@ -12,6 +13,12 @@ public class ContentsForm {
 	private String posterimgname;
 	private String posterimgposter;
 	private String kind;
+	public int getContentsid() {
+		return contentsid;
+	}
+	public void setContentsid(int contentsid) {
+		this.contentsid = contentsid;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -54,7 +61,18 @@ public class ContentsForm {
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	
+	public String getPosterimgname() {
+		return posterimgname;
+	}
+	public void setPosterimgname(String posterimgname) {
+		this.posterimgname = posterimgname;
+	}
+	public String getPosterimgposter() {
+		return posterimgposter;
+	}
+	public void setPosterimgposter(String posterimgposter) {
+		this.posterimgposter = posterimgposter;
+	}
 	public String getKind() {
 		return kind;
 	}
@@ -64,7 +82,4 @@ public class ContentsForm {
 	
 	
 	
-
-	
-
 }

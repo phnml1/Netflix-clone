@@ -68,29 +68,33 @@
           <div class="beginword1">
             <h1>
               영화와 시리즈를 무제한으로.
-              <%
-                 String address = (String)session.getAttribute("address");
-                  %>
-                  <%= type %>
+                  <%if(!(type==null)&&type.equals("admin")) {%>
+                  <br>(
+                  <%= type %>계정)
+                  <%} %>
             </h1>
           </div>
           <div class="beginword2">
             다양한 디바이스에서 시청하세요. 언제든 해지하실 수 있습니다.
           </div>
           <div class="beginword3">
-            시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.
+            시청할 준비가 되셨나요?
           </div>
           <div class='begininputcon'>
-            <div class="begininput">
-              <div class="inputword">
-                이메일을 입력하세요
-              </div>
-            </div>
-            <a href = "/contents">
+            
+            <% if (id==null) { %>
+            <a href = "/login">
             <button class="beginbutton">
               시작하기>
             </button>
             </a>
+            <%} else { %>
+            <a href = "/series">
+            <button class="beginbutton">
+              시작하기>
+            </button>
+            </a>
+            <%} %>
           </div>
         </div>
         <div class="divider">
@@ -299,20 +303,17 @@
             <div class = "inputemailwrap">
               <div class = "inputemailinside">
                 <form class = "inputemailform">
-                  <h3> 시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.   </h3>
+                  <h3> 시청할 준비가 되셨나요?   </h3>
+                    <a href = "/series">
                   <div class = "inputemail">
-                    <div class="begininput">
-                      <div class="inputword">
-                        이메일을 입력하세요
-                      </div>
-                    </div>
-                    <a href = "/contents">
+                   
+                  
                     <button class="beginbutton">
                       시작하기>
                     </button>
-                    </a>
+                   
                   </div>
-                  
+                   </a>
                 </form>
               </div>
             </div>

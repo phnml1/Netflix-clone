@@ -35,7 +35,7 @@
     				<input type = "text" placeholder="주소" name = "address" class = "logininput"/>
     				<input type = "number" placeholder="나이" name = "age" class = "logininput"/>
     				<input type = "text" placeholder="이름" name = "name" class = "logininput"/>
-    				<input type = "hidden" name="type" value = "admin"/>
+    				<input type = "hidden" name="type" value = "cus"/>
     				<button class = "loginbutton">회원가입</button>
     				
     			</form>

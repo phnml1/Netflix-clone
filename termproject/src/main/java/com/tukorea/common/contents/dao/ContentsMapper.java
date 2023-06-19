@@ -1,12 +1,13 @@
 package com.tukorea.common.contents.dao;
 
 import java.util.HashMap;
+
+
 import java.util.List;
 
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
-
 
 import com.tukorea.common.contents.domain.Contents;
 
@@ -18,7 +19,9 @@ public interface ContentsMapper {
 		public int selectContentsListTotalCount();
 		
 		// 게시판 목록 조회
-		public List<Contents> selectContentsList();
+		public List<Contents> selectMovieList();
+		
+		public List<Contents> selectSeriesList();
 
 		// 게시판 상세 정보 조회
 		public Contents selectContentsInfo(int ContentsSeq);
@@ -30,4 +33,5 @@ public interface ContentsMapper {
 		
 		public int selectContentsPasswordForCheck(HashMap<String,Object> paramMap);
 
+		public int updateContents(Contents content);
 }

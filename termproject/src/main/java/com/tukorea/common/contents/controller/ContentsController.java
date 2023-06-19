@@ -1,6 +1,7 @@
 package com.tukorea.common.contents.controller;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.tukorea.common.contents.domain.Contents;
 import com.tukorea.common.contents.dto.ContentsForm;
+import com.tukorea.common.contents.dto.ContentsModifyForm;
 import com.tukorea.common.contents.service.ContentsService;
 
 @Controller
@@ -57,16 +59,24 @@ private final ContentsService service;
 	
 	
 
-	@GetMapping("/contents")
-	public String getContentsList(Model model) {
+	@GetMapping("/movie")
+	public String getMovieList(Model model) {
 		// 게시판 목록 조회 메서드 호출
-		Map<String, Object> result = service.getContentsList();
+		Map<String, Object> result = service.getMovieList();
 		
 		model.addAllAttributes(result);
 		
-		return "common/contents/ContentsPage";
+		return "common/contents/MoviePage";
 	}
-
+	@GetMapping("/series")
+	public String getContentsList(Model model) {
+		// 게시판 목록 조회 메서드 호출
+		Map<String, Object> result = service.getSeriesList();
+		
+		model.addAllAttributes(result);
+		
+		return "common/contents/SeriesPage";
+	}
 
 
 	@GetMapping("/contents/form")
@@ -76,17 +86,41 @@ private final ContentsService service;
 
 
 	@PostMapping("/contents/delete")
-	public String deleteBoard(@RequestParam int contentsId) {
+	public String deleteBoard(@RequestParam int contentsid) {
 		// 게시판 등록 메서드 호출
-		service.deleteBoard(contentsId);
+		service.deleteBoard(contentsid);
 		
-		return "redirect:contents/contents/ContentsPage";
+		return "redirect:/";
+	}
+	@PostMapping("/contents/modifyForm")
+	public String getBoardModifyForm(@RequestParam int contentsid, Model model) {
+		// 게시판 상세정보 조회 메서드 호출
+		Contents content = service.getContentsDetailForModify(contentsid);
+		model.addAttribute("contents", content);
+		
+		return "admin/contents/modifyContentsForm";
+	}
+	
+	@PostMapping("/contents/modify")
+	public String modifyBoard(ContentsModifyForm contentForm,@RequestParam("contentsFile") MultipartFile files) {
+		// 게시판 등록 메서드 호출
+		service.updateBoard(contentForm,files);
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/contents/detail")
+	public String getContentsDetail(@RequestParam int contents_id, Model model) {
+		
+		Contents content = service.getContentsDetail(contents_id);
+		model.addAttribute("content", content);
+		return "common/contents/ContentsDetail";
 	}
 	@ResponseBody
 	@PostMapping("/contents/checkPassword")
-	public boolean checkPassword(@RequestParam int boardSeq, @RequestParam String password, Model model) {
+	public boolean checkPassword(@RequestParam int contentid, @RequestParam String password, Model model) {
 		// 게시판 등록 메서드 호출
-		boolean result = service.checkBoardOwner(boardSeq, password);
+		boolean result = service.checkBoardOwner(contentid, password);
 		
 		return result;
 	}

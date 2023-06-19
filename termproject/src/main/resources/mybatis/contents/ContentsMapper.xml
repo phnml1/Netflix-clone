@@ -7,9 +7,9 @@
 	FROM
 		CONTENTS
 </select>
-<select id = "selectContentsList" resultType = "com.tukorea.common.contents.domain.Contents">
+<select id = "selectMovieList" resultType = "com.tukorea.common.contents.domain.Contents">
 	SELECT
-		CONTENTS_ID,
+		CONTENTSID,
 		TITLE,
 		GENRE,
 		YEAR,
@@ -18,19 +18,39 @@
 		SUMMARY,
 		HITS,
 		KIND,
-		POSTER_IMG_NAME,
-		POSTER_IMG_SAVE_PATH
+		POSTERIMGNAME,
+		POSTERIMGSAVEPATH
 	FROM
 		CONTENTS
 	WHERE
 		KIND='MOVIE'
 	ORDER BY
-		CONTENTS_ID DESC
+		CONTENTSID DESC
+</select>
+<select id = "selectSeriesList" resultType = "com.tukorea.common.contents.domain.Contents">
+	SELECT
+		CONTENTSID,
+		TITLE,
+		GENRE,
+		YEAR,
+		DIRECTOR,
+		RUNNING,
+		SUMMARY,
+		HITS,
+		KIND,
+		POSTERIMGNAME,
+		POSTERIMGSAVEPATH
+	FROM
+		CONTENTS
+	WHERE
+		KIND='SERIES'
+	ORDER BY
+		CONTENTSID DESC
 </select>
 <!-- 게시판 상세 조회 -->
 	<select id="selectContentsInfo" parameterType="Integer" resultType="com.tukorea.common.contents.domain.Contents">
 		SELECT
-			CONTENTS_ID,
+			CONTENTSID,
 			TITLE,
 			GENRE,
 			YEAR,
@@ -40,18 +60,18 @@
 			HITS,
 			KIND,
 			DATE_FORMAT(REG_DT, '%Y-%m-%d %H:%i') AS REG_DT,
-			POSTER_IMG_SAVE_PATH
+			POSTERIMGSAVEPATH
 		FROM
 			CONTENTS
 		WHERE
-			CONTENTS_ID = #{contents_id}
+			CONTENTSID = #{contents_id}
 	</select>
 	<update id="updateContentsHits" parameterType="Integer">
 		UPDATE CONTENTS
 		SET
 			HITS = HITS + 1
 		WHERE
-			CONTENTS_ID = #{contents_id}
+			CONTENTSID = #{contents_id}
 	</update>
 	<insert id="insertContents" parameterType="java.util.HashMap">
 		INSERT INTO CONTENTS (
@@ -63,8 +83,8 @@
 			SUMMARY,
 			HITS,
 			KIND,
-			POSTER_IMG_NAME,
-			POSTER_IMG_SAVE_PATH,
+			POSTERIMGNAME,
+			POSTERIMGSAVEPATH,
 			REG_DT
 		) VALUES (
 			#{title},
@@ -86,7 +106,7 @@
 	<delete id="deleteBoard" parameterType="Integer">
 		DELETE FROM CONTENTS
 		WHERE
-			CONTENTS_ID = #{contents_id}
+			CONTENTSID = #{contentsid}
 	</delete>
 	<!-- 게시물 글 소유자 확인 -->
 	<select id="selectContentsPasswordForCheck" parameterType="java.util.HashMap" resultType="Integer">
@@ -98,5 +118,20 @@
 			TYPE = 'ADMIN'
 			AND PASSWORD = SHA2(#{password}, 256)
 	</select>
+	<update id="updateContents" parameterType="com.tukorea.common.contents.domain.Contents">
+		UPDATE CONTENTS
+SET
+    TITLE = #{title},
+    GENRE = #{genre},
+    YEAR = #{year},
+    DIRECTOR = #{director},
+    RUNNING = #{running},
+    SUMMARY = #{summary},
+    KIND = #{kind},
+    POSTERIMGNAME = #{posterimgname},
+    POSTERIMGSAVEPATH = #{posterimgsavepath}
+WHERE
+    CONTENTSID = #{contentsid}
 
+	</update>
 </mapper>
