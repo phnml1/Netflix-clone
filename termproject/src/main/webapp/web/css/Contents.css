@@ -315,6 +315,12 @@ margin-top:30px;
  .swiperimg{
  width:100%;
  height:100%;
+transition:0.3s;
+ }
+ .swiperimg:hover{
+ transform: scale(1.1);
+ transition:0.3s;
+  z-index:200;
  }
  .button-area{
  	position:absolute;

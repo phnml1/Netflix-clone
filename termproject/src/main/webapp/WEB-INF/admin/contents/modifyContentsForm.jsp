@@ -152,7 +152,7 @@ String type = (String)session.getAttribute("type");
 				
 			</table>
 			<div class="button-area">
-				<button type="submit"  id="btn_regist">게시물 등록</button>
+				<button type="submit"  id="btn_regist">게시물 수정</button>
 				<a class="button" href="/${contents.kind }">게시판 목록</a>
 			</div>
 			
